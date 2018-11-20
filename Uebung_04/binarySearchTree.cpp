@@ -2,6 +2,7 @@
 
 using namespace std;
 
+
 struct Node {
     int key;
     Node *left;
@@ -19,6 +20,7 @@ public:
         return false;
     }
 
+    /* Lab 4 Exercise 1  */
     void insert(Node *currentNode, int newKey) {
         if (isEmpty(currentNode)) {
             currentNode->key = newKey;
@@ -84,6 +86,31 @@ public:
         }
     }
 
+    void preOrder(Node *currentNode){
+        if(currentNode != nullptr){
+            cout << currentNode->key << endl;
+            preOrder(currentNode->left);
+            preOrder(currentNode->right);
+        }
+    }
+
+    void postOrder(Node *currentNode){
+        if(currentNode != nullptr){
+            postOrder(currentNode->left);
+            postOrder(currentNode->right);
+            cout << currentNode->key << endl;
+        }
+    }
+
+    void inOrder(Node *currentNode){
+        if(currentNode != nullptr){
+            inOrder(currentNode->left);
+            cout << currentNode->key << endl;
+            inOrder(currentNode->right);
+        }
+    }
+
+    /* Lab 4 Exercise 2 */
     void printTheNodesOrNone(Node *currentNode) {
         if (currentNode != nullptr) {
             if (currentNode->key % 5 == 0) {
