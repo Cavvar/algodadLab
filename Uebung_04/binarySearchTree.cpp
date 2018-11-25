@@ -2,7 +2,6 @@
 
 using namespace std;
 
-
 struct Node {
     int key;
     Node *left;
@@ -138,7 +137,7 @@ private:
         Node *newNode = new Node();
         newNode->key = key;
         newNode->right = newNode->left = nullptr;
-        return newNode;
+        return newNode; 
     }
 };
 
