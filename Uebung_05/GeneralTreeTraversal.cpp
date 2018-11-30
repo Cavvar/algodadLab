@@ -49,7 +49,7 @@ public:
         int id = 1;
         for (Node *element: tree) {
             if (element == root) {
-                cout << "ID: " << id << " Key: " << element->key << " This is the root" << endl;
+                cout << "ID: " << id << " Key: " << element->key << endl;
             } else {
                 cout << "ID: " << id << " Key: " << element->key << " Parent: " << element->parent->key << endl;
             }
@@ -62,20 +62,22 @@ public:
         return tree.size();
     }
 
-    int height(){
-        int amountOfDifferentParents = 0;
-        int currentParent = tree.front()->key;
-        for (Node *element: tree) {
-            if(element == root){
-                amountOfDifferentParents = 1;
-            }else{
-                if(element->parent->key != currentParent){
-                    currentParent = element->parent->key;
-                    amountOfDifferentParents++;
-                }
-            }
+    int height() {
+        Node *current = tree.back();
+
+        if(current == nullptr){
+            return 0;
+        }else if(current->parent == nullptr){
+            return 1;
         }
-        return amountOfDifferentParents;
+
+        int size = 0;
+        while(current->parent != nullptr){
+            size++;
+            current = current->parent;
+        }
+
+        return size;
     }
 
 private:
